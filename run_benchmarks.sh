@@ -27,10 +27,10 @@ echo
 command_exists 'gcc' && {
   echo "Running C bench... (GCC)"
   echo "(GCC with no optimization)"
-  gcc "${DIR}/bench.c" -std=c99 -lm -o /tmp/bench && /tmp/bench
+  gcc "${DIR}/bench.c" -std=c99 -lm -lrt -o /tmp/bench && /tmp/bench
   rm /tmp/bench
   echo "(GCC with -O3)"
-  gcc "${DIR}/bench.c" -O3 -std=c99 -lm -o /tmp/bench && /tmp/bench
+  gcc "${DIR}/bench.c" -O3 -std=c99 -lm -lrt -o /tmp/bench && /tmp/bench
   rm /tmp/bench
 } || { echo "gcc not found, skipping tests..."; }
 echo
