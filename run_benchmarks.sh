@@ -19,8 +19,7 @@ echo
 
 (command_exists 'java' && command_exists 'javac') && {
   echo "Running Java bench..."
-  javac "${DIR}/Bench.java"
-  java -cp "${DIR}" Bench
+  javac "${DIR}/Bench.java" && java -cp "${DIR}" Bench
   rm "${DIR}/Bench.class"
 } || { echo "java/javac not found, skipping tests..."; }
 echo
@@ -28,10 +27,10 @@ echo
 command_exists 'gcc' && {
   echo "Running C bench... (GCC)"
   echo "(GCC with no optimization)"
-  gcc "${DIR}/bench.c" -std=c11 -lm -o /tmp/bench && /tmp/bench
+  gcc "${DIR}/bench.c" -std=c99 -lm -o /tmp/bench && /tmp/bench
   rm /tmp/bench
   echo "(GCC with -O3)"
-  gcc "${DIR}/bench.c" -O3 -std=c11 -lm -o /tmp/bench && /tmp/bench
+  gcc "${DIR}/bench.c" -O3 -std=c99 -lm -o /tmp/bench && /tmp/bench
   rm /tmp/bench
 } || { echo "gcc not found, skipping tests..."; }
 echo
