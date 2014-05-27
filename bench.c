@@ -28,8 +28,6 @@ int main() {
         { 4, 0, 0, 2, 0, 0, 0, 0, 0 }
     };
     
-    //print_board((board_t) initial_board);
-    
     unsigned long elapsed = 0;
     for (uint8_t i = 0; i < 5; i++) {
         board_t state = (board_t) malloc(sizeof(initial_board));
@@ -88,7 +86,7 @@ bool next_state(board_t state, uint8_t x, uint8_t y) {
 }
 
 void print_board(board_t state) {
-    printf("[ ");
+    printf("[");
     for (uint8_t x = 0; x < 9; x++) {
         if (x > 0)
             printf(" ");
